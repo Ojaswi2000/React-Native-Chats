@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import {View,StyleSheet, Text,TextInput} from 'react-native';
+import {View,StyleSheet, Text,TextInput,TouchableOpacity} from 'react-native';
 
 export default class Home extends Component
 {
+    state={
+        name:'',
+    };
     render()
     {
         return(
@@ -10,7 +13,24 @@ export default class Home extends Component
                 <Text style={styles.title}>
                     Enter your name:
                 </Text>
-                <TextInput style={styles.nameInput} placeholder='Ojaswi Awasthi' />
+                <TextInput style={styles.nameInput} 
+                placeholder='Ojaswi Awasthi' 
+                onChangeText={(text)=>{
+                    this.setState({
+                        name:text,
+
+                    })
+                }}
+                value={this.state.name}
+                />
+                <TouchableOpacity onPress={()=>{
+                    alert(this.state.name);
+
+                }}>
+                    <Text style={styles.buttonText}>
+                        Next
+                    </Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -28,5 +48,11 @@ const styles=StyleSheet.create({
         borderColor:'black',
         margin:20,
         padding:10
+    },
+    buttonText:{
+        fontSize:17,
+        color:'blue',
+        marginLeft:10,
+        
     }
 });
