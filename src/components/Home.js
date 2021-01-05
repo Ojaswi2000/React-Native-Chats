@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {View,StyleSheet, Text,TextInput,TouchableOpacity} from 'react-native';
-
+import {Actions} from 'react-native-router-flux';
 export default class Home extends Component
 {
     state={
@@ -24,7 +24,9 @@ export default class Home extends Component
                 value={this.state.name}
                 />
                 <TouchableOpacity onPress={()=>{
-                    alert(this.state.name);
+                    Actions.chat({
+                        name:this.state.name,
+                    })
 
                 }}>
                     <Text style={styles.buttonText}>
